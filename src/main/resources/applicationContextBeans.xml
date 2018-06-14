@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="fileUploadError" class="com.zzy.fileUploadErrorAction.fileUploadError" scope="prototype"></bean>
+	
+	<bean id="userAction" class="com.zzy.user.action.UserAction" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	
+	<bean id="userDao" class="com.zzy.user.dao.UserDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="userService" class="com.zzy.user.service.UserService">
+		<property name="userDao" ref="userDao"></property>
+		<property name="schoolDao" ref="schoolDao"></property>
+	</bean>
+	
+	<bean id="categorySecondAction" class="com.zzy.categorySecond.action.CategorySecondAction" scope="prototype">
+		<property name="categorySecondService" ref="categorySecondService"></property>
+	</bean>
+	
+	<bean id="categorySecondDao" class="com.zzy.categorySecond.dao.CategorySecondDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="categorySecondService" class="com.zzy.categorySecond.service.CategorySecondService">
+		<property name="categorySecondDao" ref="categorySecondDao"></property>
+	</bean>
+	
+	
+	<bean id="goodsAction" class="com.zzy.goods.action.GoodsAction" scope="prototype">
+		<property name="goodsService" ref="goodsService"></property>
+		<property name="userService" ref="userService"></property>
+		<property name="categorySecondService" ref="categorySecondService"></property>
+	</bean>
+	
+	<bean id="goodsDao" class="com.zzy.goods.dao.GoodsDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="goodsService" class="com.zzy.goods.service.GoodsService">
+		<property name="goodsDao" ref="goodsDao"></property>
+		<property name="reviewDao" ref="reviewDao"></property>
+	</bean>
+	
+	
+	
+	<bean id="goodsActionApp" class="com.zzy.goods.action.GoodsActionApp" scope="prototype">
+		<property name="goodsServiceApp" ref="goodsServiceApp"></property>
+	</bean>
+	
+	<bean id="goodsDaoApp" class="com.zzy.goods.dao.GoodsDaoApp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="goodsServiceApp" class="com.zzy.goods.service.GoodsServiceApp">
+		<property name="goodsDaoApp" ref="goodsDaoApp"></property>
+	</bean>
+	
+	
+	<bean id="reviewAction" class="com.zzy.review.action.ReviewAction" scope="prototype">
+		<property name="reviewService" ref="reviewService"></property>
+	</bean>
+	
+	<bean id="reviewDao" class="com.zzy.review.dao.ReviewDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="reviewService" class="com.zzy.review.service.ReviewService">
+		<property name="reviewDao" ref="reviewDao"></property>
+		<property name="userDao" ref="userDao"></property>
+		<property name="goodsDao" ref="goodsDao"></property>
+	</bean>
+	
+	<bean id="goodsSerachAction" class="com.zzy.goods.action.GoodsSerachAction" scope="prototype">
+		<property name="goodsService" ref="goodsService"></property>
+	</bean>
+	
+	
+	<bean id="schoolAction" class="com.zzy.school.action.SchoolAction" scope="prototype">
+		<property name="schoolService" ref="schoolService"></property>
+	</bean>
+	
+	<bean id="schoolDao" class="com.zzy.school.dao.SchoolDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="schoolService" class="com.zzy.school.service.SchoolService">
+		<property name="schoolDao" ref="schoolDao"></property>
+	</bean>
+	
+</beans>

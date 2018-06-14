@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-5-6 15:01:16 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.zzy.school.pojo.School" table="SCHOOL">
+        <id name="id" type="java.lang.Integer">
+            <column name="school_id" />
+            <generator class="native" />
+        </id>
+        <property name="schoolName" type="java.lang.String">
+            <column name="school_name" />
+        </property>
+    </class>
+</hibernate-mapping>

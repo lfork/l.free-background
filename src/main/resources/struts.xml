@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.multipart.saveDir" value="/temp/"></constant>
+	<constant name="struts.multipart.maxSize" value="9000000"/>
+
+	<package name="default" namespace="/" extends="struts-default">
+		
+		<action name="user_*" class="userAction" method="{1}">
+			
+			<interceptor-ref name="cookie">
+				<param name="cookiesName">JSESSIONID</param>
+				<param name="cookiesValue">*</param>
+			</interceptor-ref>
+			
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/x-png,
+					image/pjpeg</param>
+				<param name="fileUpload.allowedExtensions">jpg, png</param>
+				<param name="fileUpload.maximumSize">5000000</param>
+			</interceptor-ref>
+
+			<result name="input" type="redirectAction">fileUploadError</result>
+		</action>
+		
+		<action name="cs_*" class="categorySecondAction" method="{1}"></action>
+		
+		<action name="fileUploadError" class="fileUploadError" method="execute"></action>
+		
+		<action name="goods_*" class="goodsAction" method="{1}">
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/x-png,
+					image/pjpeg</param>
+				<param name="fileUpload.allowedExtensions">jpg, png</param>
+				<param name="fileUpload.maximumSize">5000000</param>
+			</interceptor-ref>
+			<result name="input" type="redirectAction">fileUploadError</result>
+		</action>
+		
+		<action name="goodsApp_*" class="goodsActionApp" method="{1}"></action>
+		
+		<action name="review_*" class="reviewAction" method="{1}"></action>
+		
+		<action name="goodsSerach_*" class="goodsSerachAction" method="{1}"></action>
+		
+		<action name="school_*" class="schoolAction" method="{1}"></action>
+
+	</package>
+
+</struts>

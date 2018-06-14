@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-31 19:36:55 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.zzy.goods.pojo.Goods" table="GOODS">
+        <id name="gId" type="java.lang.Integer" access="field">
+            <column name="G_ID" />
+            <generator class="native" />
+        </id>
+        <property name="gName" type="java.lang.String" access="field">
+            <column name="G_NAME" />
+        </property>
+        <property name="gBuyPrice" type="double" access="field">
+            <column name="G_BUYPRICE" />
+        </property>
+        <property name="gSellPrice" type="double" access="field">
+            <column name="G_SELLPRICE" />
+        </property>
+        
+         <property name="gIsSold" type="java.lang.Integer" access="field">
+            <column name="G_ISSOLD" />
+        </property>
+        
+         <property name="gCoverImage" type="java.lang.String" access="field">
+            <column name="G_COVERIMAGE" />
+        </property>
+        
+        <property name="gDesc" type="java.lang.String" access="field">
+            <column name="G_DESC" />
+        </property>
+        <property name="gMakeDate" type="java.lang.String" access="field">
+            <column name="G_MAKEDATE" />
+        </property>
+        <many-to-one name="categorySecond" class="com.zzy.categorySecond.pojo.CategorySecond" fetch="join" lazy="false" cascade="none">
+            <column name="CS_ID" />
+        </many-to-one>
+        <many-to-one name="user" class="com.zzy.user.pojo.User" fetch="join" lazy="false" cascade="none">
+            <column name="U_ID" />
+        </many-to-one>
+        <set name="goodsImages" table="GOODSIMAGE" inverse="false" lazy="false" cascade="save-update,delete">
+            <key>
+                <column name="G_ID" />
+            </key>
+            <one-to-many class="com.zzy.goodImages.pojo.GoodsImage" />
+        </set>
+    </class>
+</hibernate-mapping>

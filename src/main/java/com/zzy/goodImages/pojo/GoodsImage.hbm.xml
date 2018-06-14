@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-31 19:36:55 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.zzy.goodImages.pojo.GoodsImage" table="GOODS_IMAGE">
+        <id name="gImageId" type="java.lang.Integer" access="field">
+            <column name="G_IMAGE_ID" />
+            <generator class="native" />
+        </id>
+        <property name="gImageFile" type="java.lang.String" access="field">
+            <column name="G_IMAGE_FILE" />
+        </property>
+        <property name="gImageDesc" type="java.lang.String" access="field">
+            <column name="G_IMAGE_DESC" />
+        </property>
+        <many-to-one name="goods" class="com.zzy.goods.pojo.Goods" fetch="join">
+            <column name="G_ID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

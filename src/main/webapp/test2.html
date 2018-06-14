@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/22y/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+		$(function (){
+			$("#sid").change(function (){
+				var url = "http://39.107.234.208:8080/22y/user_findById";
+				var val = $("#sid").val();
+				var args = {studentId:val};
+				$.post(url, args, function(data) {
+					alert(data);
+				});
+			});
+			
+			$("#username").change(function (){
+				var url = "http://39.107.234.208:8080/22y/user_findByName";
+				var val = $("#username").val();
+				var args = {userName:val};
+				$.post(url, args, function(data) {
+					alert(data);
+				});
+			});
+			
+		});
+</script>
+</head>
+<body>
+
+	
+	<!-- 服务器：  http://www.lfork.top/22y/user_regist -->
+	<!-- 本地的测试： http://39.107.234.108/user_regist -->
+	
+	<form action="http://39.107.234.208:8080/22y/user_regist" method="post">
+
+		学号 ： <input id="sid" type="text" name="studentId" /><br>  <!--  JavaWeb 使用ajax 验证  ， change事件， 验证是否学号是否已经注册-->
+
+		username:<input type="text" name="userName" id="username"/><br>
+
+		password ： <input type="text" name="userPassword" /><br>
+
+		<input type="submit" value="提交"/>
+	</form>
+
+	<br><br>
+	<br><br>
+	
+ 	<form action="http://39.107.234.208:8080/22y/user_login" method="post">
+		学号 ： <input type="text" name="studentId" /><br>
+		password ： <input type="text" name="userPassword" /><br>
+		<input type="submit" value="提交"/>
+	</form> -->
+
+	<br><br>
+	<br><br>
+	
+	 <a href="http://39.107.234.208:8080/22y/user_editInfo?studentId=2015215064">edit</a> 
+
+	 <br><br>
+	<br><br>
+	
+	 <form action="http://39.107.234.208:8080/22y/user_save?studentId=2015215064" enctype="multipart/form-data" method="post">
+		userEmail:<input type="text" name="userEmail" /><br>
+		userPhone:<input type="text" name="userPhone" /><br>
+		userName:<input type="text" name="userName" /><br>
+		<input type="file" name="image"/>
+		<input type="submit" value="提交"/>
+		
+	</form>
+	
+	
+	
+	
+</body>
+</html>

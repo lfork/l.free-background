@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-31 19:36:55 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.zzy.categorySecond.pojo.CategorySecond" table="CATEGORYSECOND">
+        <id name="csId" type="java.lang.Integer">
+            <column name="CS_ID" />
+            <generator class="native" />
+        </id>
+        <property name="csName" type="java.lang.String">
+            <column name="CS_NAME" />
+        </property>
+        <property name="csMakeDate" type="java.lang.String">
+            <column name="CS_MAKEDATE" />
+        </property>
+    </class>
+</hibernate-mapping>

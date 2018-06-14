@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/22y/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+		$(function (){
+			$("#sid").change(function (){
+				var url = "http://localhost:8080/22y/user_findById";
+				var val = $("#sid").val();
+				var args = {studentId:val};
+				$.post(url, args, function(data) {
+					alert(data);
+				});
+			});
+			
+			$("#username").change(function (){
+				var url = "http://localhost:8080/22y/user_findByName";
+				var val = $("#username").val();
+				var args = {userName:val};
+				$.post(url, args, function(data) {
+					alert(data);
+				});
+			});
+			
+		});
+</script>
+</head>
+<body>
+
+	
+	
+ 	<!-- 服务器：  http://www.lfork.top/22y/user_regist -->
+	<!-- 本地的测试： http://39.107.234.108/user_regist -->
+	
+	 <form action="http://localhost:8080/22y/user_regist" method="post">
+
+		学号 ： <input id="sid" type="text" name="studentId" /><br>   JavaWeb 使用ajax 验证  ， change事件， 验证是否学号是否已经注册
+
+		username:<input type="text" name="userName" id="username"/><br>
+
+		password ： <input type="text" name="userPassword" /><br>
+		
+		<select name="userSchoolId" size="0">
+			<option value="10">Cuit</option>
+			<option value="1">四川大学</option>
+		</select><br>
+
+		<input type="submit" value="提交"/>
+	</form>
+
+	<br><br>
+	<br><br>
+	
+ 	<form action="http://localhost:8080/22y/user_login" method="post">
+		学号 ： <input type="text" name="studentId" /><br>
+		password ： <input type="text" name="userPassword" /><br>
+		<input type="submit" value="提交"/>
+	</form>
+
+	<br><br>
+	<br><br>
+	
+	 <a href="http://localhost:8080/22y/user_editInfo">edit</a> 
+
+	 <br><br>
+	<br><br>
+	
+	 <form action="http://localhost:8080/22y/user_save?studentId=2015215064" enctype="multipart/form-data" method="post">
+		userEmail:<input type="text" name="userEmail" /><br>
+		userPhone:<input type="text" name="userPhone" /><br>
+		userName:<input type="text" name="userName" /><br>
+		userSchool:
+		<select name="userSchool.id" size="0">
+			<option value="10">Cuit</option>
+			<option value="1">四川大学</option>
+		</select>
+		<input type="file" name="image"/>
+		<input type="submit" value="提交"/>
+		
+	</form>
+	
+	<!-- 得到所有的二级分类列表 -->
+	<a href="http://localhost:8080/22y/cs_getCsList">getCsList</a>
+	
+	<!-- 得到某一个具体的二级分类的 分页显示列表  其中 csId 代表二级分类的ID 属性，pageNo 表示要展示第几页 两个属性-->
+	<a href="http://localhost:8080/22y/cs_getPageCsList?csId=2&pageNo=1">getPageCsList</a>
+	
+	<!-- 商品上传的 form 表单说明  -->
+	<form action="http://localhost:8080/22y/goods_upload" method="post" enctype="multipart/form-data">
+		
+		<!-- 上传图片时 必须加上 上传商品的用户的ID -->
+		<input type="hidden" name="studentId" value="2015215064"/>
+		
+		<!-- 商品名称 -->
+		name ： <input type="text" name="gName" /><br>
+		
+		<!-- 商品的购买价格 -->
+		gBuyPrice ： <input type="text" name="gBuyPrice" /><br>
+		
+		<!-- 商品准备出手的价格 -->
+		gSellPrice ： <input type="text" name="gSellPrice" /><br>
+		
+		<!-- 所属的二级分类，http://localhost:8080/22y/cs_getCsList 此路径得到的数据展示 -->
+		<select size="0" name="csId">
+			<option value="1">数码影音</option>
+			<option value="2">鞋服配饰</option>
+			<option value="3">家居日用</option>
+		</select>
+		<!-- 最为吸引的图片的展示，即商品封面, 此图片必填 -->
+		gCoverImage ： <input type="file" name="coverImage" /><br>
+		
+		<!-- 商品细节描述 -->
+		gDesc:<input type="text" name="gDesc" /><br>
+		
+		<!-- 商品细节图片 -->
+		Image ： <input type="file" name="images" />
+		desc1:<input type="text" name="desc"/><br>
+		
+		Image ： <input type="file" name="images" />
+		desc2:<input type="text" name="desc"/><br>
+		
+		Image ： <input type="file" name="images" />
+		desc3:<input type="text" name="desc"/><br>
+		
+		Image ： <input type="file" name="images" />
+		desc4:<input type="text" name="desc"/><br>
+		
+		<input type="submit" value="提交"/>
+	</form>
+	
+	 <br><br>
+	<br><br>
+	<a href="http://localhost:8080/22y/user_info?studentId=2015215064">user Info</a>
+	
+	<a href="http://localhost:8080/22y/goods_getGoodsById?goodsId=4">getGoodsById</a>
+	
+	<a href="http://localhost:8080/22y/goods_deleteGoodsById?goodsId=3">deleteGoodsById</a>
+	
+	<a href="http://localhost:8080/22y/goodsApp_getGoodsPageApp?csId=2&cursor=2018-04-08 08:08:48">getGoodsPageApp</a>
+	
+	<form action="http://localhost:8080/22y/user_imageUpload?studentId=2015215064" method="post" enctype="multipart/form-data">
+		用戶頭像：<input type="file" name="image"/>
+		<input type="submit">
+	</form>
+	<br><br>
+	<a href="http://localhost:8080/22y/user_getUserGoodsByUid?studentId=2015215064&cursor=2018-04-08 08:03:07">getUserGoodsByUidApp</a>
+	<br><br>
+	
+	<!-- 获取到学校列表 -->
+	<a href="http://localhost:8080/22y/school_getSchoolList">getSchoolList</a>
+	<br><br>
+	
+	<form action="http://localhost:8080/22y/review_reviewSave?userId=2015215064&goodsId=4" method="post">
+		
+		text:<input type="text" name="reviewContext"/><br>
+		<input type="submit"/>
+		
+	</form>
+	<br><br>
+	<form action="http://localhost:8080/22y/goodsSerach_getGoodsByName" method="post">
+		
+		text:<input type="text" name="goodsLikeName"/><br>
+		<input type="submit"/>
+		
+	</form>
+	
+	<a href="http://localhost:8080/22y/user_getSessionUser">getSessionUser</a>
+	<br><br>
+	
+	<a href="http://localhost:8080/22y/user_logout">logout</a>
+	<br><br>
+	
+</body>
+</html>

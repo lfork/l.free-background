@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-31 19:36:55 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.zzy.user.pojo.User" table="USER">
+        <id name="userId" type="java.lang.Integer">
+            <column name="U_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="userName" type="java.lang.String">
+            <column name="U_NAME" />
+        </property>
+        <property name="userPassword" type="java.lang.String">
+            <column name="U_PASSWORD" />
+        </property>
+        <property name="userEmail" type="java.lang.String">
+            <column name="U_EMAIL" />
+        </property>
+        <property name="userPhone" type="java.lang.String">
+            <column name="U_PHONE" />
+        </property>
+        <property name="userAddress" type="java.lang.String">
+            <column name="U_ADDRESS" />
+        </property>
+        
+        <many-to-one name="userSchool" class="com.zzy.school.pojo.School" lazy="false">
+        	<column name="u_school"></column>
+        </many-to-one>
+        
+        <property name="userImagePath" type="java.lang.String">
+            <column name="U_IMAGEPATH" />
+        </property>
+        <property name="userDesc" type="java.lang.String">
+            <column name="U_DESC" />
+        </property>
+        <property name="userMakeDate" type="java.lang.String">
+            <column name="U_MAKEDATE" />
+        </property>
+    </class>
+</hibernate-mapping>

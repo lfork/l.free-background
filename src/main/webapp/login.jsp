@@ -15,7 +15,7 @@
 	</form>
 	
 	<%
-		out.write(session.getAttribute("user").toString());
+		out.write("java.lang.NullPointerException"); //session.getAttribute("user").toString()
 	%>
 		
 </body>

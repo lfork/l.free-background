@@ -21,7 +21,7 @@ public class Base {
 		return s;
 	}
 
-	// ½âÃÜ
+	// è§£å¯†
 	public static String getFromBase64(String s) {
 		byte[] b = null;
 		String result = null;

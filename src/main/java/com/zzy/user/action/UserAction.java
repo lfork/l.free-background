@@ -30,7 +30,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 
 	private static final long serialVersionUID = 1L;
 	
-	// ½ÓÊÜ½çÃæ´«À´µÄÓÃ»§×¢²áµÄ Ñ§ºÅ
+	// æ¥å—ç•Œé¢ä¼ æ¥çš„ç”¨æˆ·æ³¨å†Œçš„ å­¦å·
 	private String studentId;
 	
 	private String JSESSIONID;
@@ -61,9 +61,9 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 		this.cursor = cursor;
 	}
 
-	private File image; // ÉÏ´«Ëù¶ÔÓ¦µÄÎÄ¼ş
-	private String imageContentType; // ¶ÔÓ¦ÉÏ´«ÎÄ¼şµÄÀàĞÍ
-	private String imageFilename; // ¶ÔÓ¦ÉÏ´«ÎÄ¼şµÄÃû³Æ
+	private File image; // ä¸Šä¼ æ‰€å¯¹åº”çš„æ–‡ä»¶
+	private String imageContentType; // å¯¹åº”ä¸Šä¼ æ–‡ä»¶çš„ç±»å‹
+	private String imageFilename; // å¯¹åº”ä¸Šä¼ æ–‡ä»¶çš„åç§°
 
 	private JsonBean<User> jsonBean = null;
 	
@@ -87,13 +87,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 		return imageFilename;
 	}
 
-	private UserService userService; // Ê¹ÓÃÒµÎñ²ãµÄjava¶ÔÏó
+	private UserService userService; // ä½¿ç”¨ä¸šåŠ¡å±‚çš„javaå¯¹è±¡
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 
-	// Ä£ĞÍ Çı¶¯ User ¶ÔÏó
+	// æ¨¡å‹ é©±åŠ¨ User å¯¹è±¡
 	private User user = new User();
 
 	public void setUser(User user) {
@@ -110,10 +110,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 		PageApp<GoodsPageBeanApp> pageApp = userService.getUserGoodsByUidApp(studentId, cursor);
 		if(pageApp == null){
 			bean.setId(StatusUtils.DATA_QUERY_FAIL);
-			bean.setMsg("Êı¾İ²éÕÒÊ§°Ü£¡");
+			bean.setMsg("æ•°æ®æŸ¥æ‰¾å¤±è´¥ï¼");
 		}else{
 			bean.setId(StatusUtils.OPERATION_SUCCESS);
-			bean.setMsg("Êı¾İ²éÕÒ³É¹¦£¡");
+			bean.setMsg("æ•°æ®æŸ¥æ‰¾æˆåŠŸï¼");
 			bean.setData(pageApp.getList());
 		}
 		
@@ -123,7 +123,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 	
 	
 	/**
-	 * ²é¿´ÓÃ»§ĞÅÏ¢
+	 * æŸ¥çœ‹ç”¨æˆ·ä¿¡æ¯
 	 * @return
 	 */
 	public String info(){
@@ -132,16 +132,16 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 		jsonBean = new JsonBean<>();
 		if(studentId == null || "".equals(studentId)){
 			jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-			jsonBean.setMsg("ÓÃ»§Êı¾İ±ØĞë×Ö¶Î´æÔÚ¿ÕÖµ£¬ ÇëÍê³É±ØĞëµÄÊı¾İÌîĞ´");
+			jsonBean.setMsg("ç”¨æˆ·æ•°æ®å¿…é¡»å­—æ®µå­˜åœ¨ç©ºå€¼ï¼Œ è¯·å®Œæˆå¿…é¡»çš„æ•°æ®å¡«å†™");
 		}else{
 			exitIdUser = userService.findUserByUserId(Integer.parseInt(studentId));
 			if(exitIdUser != null){
 				jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
-				jsonBean.setMsg("Êı¾İ²éÑ¯Õı³£");
+				jsonBean.setMsg("æ•°æ®æŸ¥è¯¢æ­£å¸¸");
 				jsonBean.setData(exitIdUser);
 			}else{
 				jsonBean.setId(StatusUtils.DATA_QUERY_FAIL);
-				jsonBean.setMsg("Î´²éÕÒµ½Ö¸¶¨ÈËÔ±ĞÅÏ¢!");
+				jsonBean.setMsg("æœªæŸ¥æ‰¾åˆ°æŒ‡å®šäººå‘˜ä¿¡æ¯!");
 			}
 		}
 		
@@ -149,7 +149,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 		return null;
 	}
 
-	// ½ÓÊÜ×¢²áĞÅÏ¢´¦Àí
+	// æ¥å—æ³¨å†Œä¿¡æ¯å¤„ç†
 	public String regist() {
 
 		jsonBean = new JsonBean<User>();
@@ -160,10 +160,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 		
 		if (exitIdUser != null) {
 			jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-			jsonBean.setMsg("Ñ§ºÅÒÑ¾­×¢²á£¡");
+			jsonBean.setMsg("å­¦å·å·²ç»æ³¨å†Œï¼");
 		} else if(exitNameUser != null){
 			jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-			jsonBean.setMsg("ÓÃ»§ÃûÒÑ´æÔÚ£¡");
+			jsonBean.setMsg("ç”¨æˆ·åå·²å­˜åœ¨ï¼");
 		}else{
 			if (userFieldNotNullTest(studentId) && userFieldNotNullTest(user.getUserPassword())
 					&& userFieldNotNullTest(user.getUserName())) {
@@ -178,14 +178,14 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 
 				if (b) {
 					jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
-					jsonBean.setMsg("×¢²á³É¹¦£¡");
+					jsonBean.setMsg("æ³¨å†ŒæˆåŠŸï¼");
 				} else {
 					jsonBean.setId(StatusUtils.DATA_UPDATE_FAIL);
-					jsonBean.setMsg("ĞÅÏ¢ÓĞÎó£¬×¢²áÊ§°Ü£¬ ÇëÖØĞÂ×¢²á£¡");
+					jsonBean.setMsg("ä¿¡æ¯æœ‰è¯¯ï¼Œæ³¨å†Œå¤±è´¥ï¼Œ è¯·é‡æ–°æ³¨å†Œï¼");
 				}
 			} else {
 				jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-				jsonBean.setMsg("ÓÃ»§Êı¾İ±ØĞë×Ö¶Î´æÔÚ¿ÕÖµ£¬ ÇëÍê³É±ØĞëµÄÊı¾İÌîĞ´");
+				jsonBean.setMsg("ç”¨æˆ·æ•°æ®å¿…é¡»å­—æ®µå­˜åœ¨ç©ºå€¼ï¼Œ è¯·å®Œæˆå¿…é¡»çš„æ•°æ®å¡«å†™");
 			}
 		}
 
@@ -195,7 +195,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 	}
 	
 	/**
-	 * ajax ÑéÖ¤ÓÃ»§ÃûÊÇ·ñ¿ÉÓÃ
+	 * ajax éªŒè¯ç”¨æˆ·åæ˜¯å¦å¯ç”¨
 	 * @return
 	 */
 	public String findByName(){
@@ -206,17 +206,17 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 		
 		if(exitNameUser != null){
 			jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-			jsonBean.setMsg("ÓÃ»§ÃûÒÑ´æÔÚ£¡");
+			jsonBean.setMsg("ç”¨æˆ·åå·²å­˜åœ¨ï¼");
 		}else{
 			jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
-			jsonBean.setMsg("ÓÃ»§Ãû¿ÉÓÃ£¡");
+			jsonBean.setMsg("ç”¨æˆ·åå¯ç”¨ï¼");
 		}
 		
 		ReturnJsonByResponse.ReturnJson(ServletActionContext.getResponse(), jsonBean);
 		return null;
 	}
 
-	// ½ÓÊÜ´¦ÀíµÇÂ¼ĞÅÏ¢
+	// æ¥å—å¤„ç†ç™»å½•ä¿¡æ¯
 	public String login() {
 		
 		jsonBean = new JsonBean<User>();
@@ -249,7 +249,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 			
 			if (flag) {
 				jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
-				jsonBean.setMsg("cookie»º´æĞÅÏ¢µÇÂ¼£¬ÔÊĞíµÇÂ¼");
+				jsonBean.setMsg("cookieç¼“å­˜ä¿¡æ¯ç™»å½•ï¼Œå…è®¸ç™»å½•");
 			} else {
 
 				existUser = userService.findUserByTwoFiled(studentId, user);
@@ -266,16 +266,16 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 //					cookie.setMaxAge(60 * 60 * 24 * 2);
 //					response.addCookie(cookie);
 					jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
-					jsonBean.setMsg("ÔÊĞíµÇÂ¼");
+					jsonBean.setMsg("å…è®¸ç™»å½•");
 					jsonBean.setData(existUser);
 				} else {
 					jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-					jsonBean.setMsg("ÕËºÅ£¬ »òÕßÃÜÂë´íÎó£¬ ÇëÔÙ´ÎµÇÂ¼£¡");
+					jsonBean.setMsg("è´¦å·ï¼Œ æˆ–è€…å¯†ç é”™è¯¯ï¼Œ è¯·å†æ¬¡ç™»å½•ï¼");
 				}
 			}
 		} else {
 			jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-			jsonBean.setMsg("ÓÃ»§µÇÂ¼Êı¾İ±ØĞë×Ö¶Î´æÔÚ¿ÕÖµ£¬ ÇëÍê³É±ØĞëµÄÊı¾İÌîĞ´");
+			jsonBean.setMsg("ç”¨æˆ·ç™»å½•æ•°æ®å¿…é¡»å­—æ®µå­˜åœ¨ç©ºå€¼ï¼Œ è¯·å®Œæˆå¿…é¡»çš„æ•°æ®å¡«å†™");
 		}
 		ReturnJsonByResponse.ReturnJson(response, jsonBean);
 		return null;
@@ -329,7 +329,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 	}
 
 	/**
-	 * ´¦ÀíÇ°Ì¨¶Ô ajax ÑéÖ¤studentId ÊÇ·ñÒÑ¾­½øĞĞ×¢²á
+	 * å¤„ç†å‰å°å¯¹ ajax éªŒè¯studentId æ˜¯å¦å·²ç»è¿›è¡Œæ³¨å†Œ
 	 * 
 	 * 
 	 */
@@ -342,10 +342,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 
 		if (existUser == null) {
 			jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
-			jsonBean.setMsg("¿ÉÒÔ×¢²á");
+			jsonBean.setMsg("å¯ä»¥æ³¨å†Œ");
 		} else {
 			jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-			jsonBean.setMsg("Ñ§ºÅÒÑ¾­±»×¢²á£¬ÇëÖ±½Ó½øĞĞµÇÂ¼");
+			jsonBean.setMsg("å­¦å·å·²ç»è¢«æ³¨å†Œï¼Œè¯·ç›´æ¥è¿›è¡Œç™»å½•");
 		}
 		ReturnJsonByResponse.ReturnJson(ServletActionContext.getResponse(), jsonBean);
 
@@ -353,7 +353,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 	}
 
 	/**
-	 * ½ÓÊÜ http://www.lfork.top/22y/use_editInfo?userId=XXX Â·¾¶½øĞĞ´¦Àí
+	 * æ¥å— http://www.lfork.top/22y/use_editInfo?userId=XXX è·¯å¾„è¿›è¡Œå¤„ç†
 	 */
 	public String editInfo() {
 
@@ -363,10 +363,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 
 		if (existUser == null) {
 			jsonBean.setId(StatusUtils.DATA_QUERY_FAIL);
-			jsonBean.setMsg("Î´²éÕÒµ½Ö¸¶¨ÈËÔ±ĞÅÏ¢!");
+			jsonBean.setMsg("æœªæŸ¥æ‰¾åˆ°æŒ‡å®šäººå‘˜ä¿¡æ¯!");
 		} else {
 			jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
-			jsonBean.setMsg("ÈËÔ±ÕÒµ½£¬ Ã»ÓĞÏÔÊ¾µÄÊı¾İĞÅÏ¢Îª¿Õ");
+			jsonBean.setMsg("äººå‘˜æ‰¾åˆ°ï¼Œ æ²¡æœ‰æ˜¾ç¤ºçš„æ•°æ®ä¿¡æ¯ä¸ºç©º");
 			jsonBean.setData(existUser);
 		}
 		ReturnJsonByResponse.ReturnJson(ServletActionContext.getResponse(), jsonBean);
@@ -386,7 +386,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 	}
 
 	/**
-	 * ½ÓÊÜ´ËÂ·¾¶ http://www.lfork.top/22y/user_save?userId=XXX µÄÇëÇó´¦Àí
+	 * æ¥å—æ­¤è·¯å¾„ http://www.lfork.top/22y/user_save?userId=XXX çš„è¯·æ±‚å¤„ç†
 	 * 
 	 * @throws FileNotFoundException
 	 */
@@ -395,36 +395,36 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 		jsonBean = new JsonBean<User>();
 		boolean b;
 
-		// ½ÓÊÜÒ³Ãæ´«¹ıÀ´µÄÑ§ºÅĞÅÏ¢ ±£´æµ½Ä£ĞÍÇı¶¯ÖĞ ×¼±¸ÍùºóÌ¨´«
+		// æ¥å—é¡µé¢ä¼ è¿‡æ¥çš„å­¦å·ä¿¡æ¯ ä¿å­˜åˆ°æ¨¡å‹é©±åŠ¨ä¸­ å‡†å¤‡å¾€åå°ä¼ 
 		user.setUserId(Integer.parseInt(studentId));
 
-//			// ½«ÉÏ´«µÄÍ¼Æ¬±£´æÔÚ·şÎñÆ÷£¬ È»ºóÉèÖÃÇı¶¯ user ÖĞµÄÍ·ÏñÂ·¾¶£¬ ×¼±¸ºÃÊı¾İ£¬È»ºó´«Èë Service ½øĞĞ±£´æ²Ù×÷
+//			// å°†ä¸Šä¼ çš„å›¾ç‰‡ä¿å­˜åœ¨æœåŠ¡å™¨ï¼Œ ç„¶åè®¾ç½®é©±åŠ¨ user ä¸­çš„å¤´åƒè·¯å¾„ï¼Œ å‡†å¤‡å¥½æ•°æ®ï¼Œç„¶åä¼ å…¥ Service è¿›è¡Œä¿å­˜æ“ä½œ
 //			String uploadImagePath = FileUpload.fileUpload(image, imageContentType, imageFilename, "userHeadImage");
 //			
 //			if(uploadImagePath == null){
 //				jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-//				jsonBean.setMsg("Ëù´«ÎÄ¼ş²»ÄÜÎª¿Õ");
+//				jsonBean.setMsg("æ‰€ä¼ æ–‡ä»¶ä¸èƒ½ä¸ºç©º");
 //			}else{
 //				user.setUserImagePath(uploadImagePath);
-//				// ´«Èë Service ²ã½øĞĞÊı¾İµÄ±£´æ
+//				// ä¼ å…¥ Service å±‚è¿›è¡Œæ•°æ®çš„ä¿å­˜
 				b = userService.saveUserEditInfo(user);
 				if (!b) {
 					jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-					jsonBean.setMsg("Ç°¶ËÊı¾İ³ö´í");
+					jsonBean.setMsg("å‰ç«¯æ•°æ®å‡ºé”™");
 				} else {
 					jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
-					jsonBean.setMsg("±£´æ³É¹¦");
+					jsonBean.setMsg("ä¿å­˜æˆåŠŸ");
 					jsonBean.setData(user);
 				}
 //			}
 
-		// ·µ»ØÒ³Ãæ±£´æµÄÊı¾İ½á¹û
+		// è¿”å›é¡µé¢ä¿å­˜çš„æ•°æ®ç»“æœ
 		ReturnJsonByResponse.ReturnJson(ServletActionContext.getResponse(), jsonBean);
 		return null;
 	}
 	
 	/**
-	 * ½ÓÊÜ´ËÂ·¾¶ http://www.lfork.top/22y/user_imageUpload?userId=XXX µÄÇëÇó´¦Àí
+	 * æ¥å—æ­¤è·¯å¾„ http://www.lfork.top/22y/user_imageUpload?userId=XXX çš„è¯·æ±‚å¤„ç†
 	 * 
 	 * @throws SQLException 
 	 * @throws IOException 
@@ -435,28 +435,28 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 		
 		if(!userFieldNotNullTest(studentId)){
 			bean.setId(StatusUtils.DATAFRONT_ERROR);
-			bean.setMsg("Ñ§ºÅĞÅÏ¢³ö´í");
+			bean.setMsg("å­¦å·ä¿¡æ¯å‡ºé”™");
 		}else{
-			// ½ÓÊÜÒ³Ãæ´«¹ıÀ´µÄÑ§ºÅĞÅÏ¢ ±£´æµ½Ä£ĞÍÇı¶¯ÖĞ ×¼±¸ÍùºóÌ¨´«
+			// æ¥å—é¡µé¢ä¼ è¿‡æ¥çš„å­¦å·ä¿¡æ¯ ä¿å­˜åˆ°æ¨¡å‹é©±åŠ¨ä¸­ å‡†å¤‡å¾€åå°ä¼ 
 			user.setUserId(Integer.parseInt(studentId));
 
-				// ½«ÉÏ´«µÄÍ¼Æ¬±£´æÔÚ·şÎñÆ÷£¬ È»ºóÉèÖÃÇı¶¯ user ÖĞµÄÍ·ÏñÂ·¾¶£¬ ×¼±¸ºÃÊı¾İ£¬È»ºó´«Èë Service ½øĞĞ±£´æ²Ù×÷
+				// å°†ä¸Šä¼ çš„å›¾ç‰‡ä¿å­˜åœ¨æœåŠ¡å™¨ï¼Œ ç„¶åè®¾ç½®é©±åŠ¨ user ä¸­çš„å¤´åƒè·¯å¾„ï¼Œ å‡†å¤‡å¥½æ•°æ®ï¼Œç„¶åä¼ å…¥ Service è¿›è¡Œä¿å­˜æ“ä½œ
 			String uploadImagePath = FileUpload.fileUpload(image, imageContentType, imageFilename, "userHeadImage");
 				
 				if(uploadImagePath == null){
 					bean.setId(StatusUtils.DATAFRONT_ERROR);
-					bean.setMsg("Ëù´«ÎÄ¼ş²»ÄÜÎª¿Õ");
+					bean.setMsg("æ‰€ä¼ æ–‡ä»¶ä¸èƒ½ä¸ºç©º");
 				}else{
 					user.setUserImagePath(uploadImagePath);
 					int i = userService.saveUserImage(user);
 					if(i == 1){
 						bean.setId(StatusUtils.OPERATION_SUCCESS);
-						bean.setMsg("±£´æ³É¹¦");
+						bean.setMsg("ä¿å­˜æˆåŠŸ");
 						bean.setData(uploadImagePath);
 					}
 					else {
 						bean.setId(StatusUtils.DATA_UPDATE_FAIL);
-						bean.setMsg("±£´æÊ§°Ü");
+						bean.setMsg("ä¿å­˜å¤±è´¥");
 						bean.setData(null);
 					}
 				}
@@ -464,7 +464,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 
 		
 
-		// ·µ»ØÒ³Ãæ±£´æµÄÊı¾İ½á¹û
+		// è¿”å›é¡µé¢ä¿å­˜çš„æ•°æ®ç»“æœ
 		ReturnJsonByResponse.ReturnJson(ServletActionContext.getResponse(), bean);
 		return null;
 	}
@@ -479,7 +479,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 			ServletActionContext.getRequest().getSession().removeAttribute("sessionUser");
 			jsonBean.setData(null);
 			jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
-			jsonBean.setMsg("ÓÃ»§³É¹¦µÇ³ö");
+			jsonBean.setMsg("ç”¨æˆ·æˆåŠŸç™»å‡º");
 		}
 		ReturnJsonByResponse.ReturnJson(ServletActionContext.getResponse(), jsonBean);
 		
@@ -495,11 +495,11 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 		if(sessionUser != null){
 			jsonBean.setData(sessionUser);
 			jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
-			jsonBean.setMsg("²éÑ¯³É¹¦");
+			jsonBean.setMsg("æŸ¥è¯¢æˆåŠŸ");
 		}else{
 			jsonBean.setData(null);
 			jsonBean.setId(StatusUtils.DATA_QUERY_FAIL);
-			jsonBean.setMsg("ÓÃ»§ĞÅÏ¢ÒÑ¾­µÇ³ö");
+			jsonBean.setMsg("ç”¨æˆ·ä¿¡æ¯å·²ç»ç™»å‡º");
 		}
 		
 		ReturnJsonByResponse.ReturnJson(ServletActionContext.getResponse(), jsonBean);
@@ -508,7 +508,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 	}
 
 	/**
-	 * ÓÃ»§Êı¾İĞŞÊ±µÄÊı¾İ·Ç¿ÕÑéÖ¤
+	 * ç”¨æˆ·æ•°æ®ä¿®æ—¶çš„æ•°æ®éç©ºéªŒè¯
 	 * 
 	 * @param user2
 	 * @return
@@ -524,7 +524,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Cook
 	}
 
 	/**
-	 * ÓÃ»§ÊıĞĞ×Ö¶ÎµÄ·Ç¿ÕĞ£Ñé
+	 * ç”¨æˆ·æ•°è¡Œå­—æ®µçš„éç©ºæ ¡éªŒ
 	 * 
 	 * @param args
 	 * @return

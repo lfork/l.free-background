@@ -47,11 +47,11 @@ public class GoodsActionApp implements ModelDriven<Goods>{
 		
 		if(pageApp.getList() == null ||pageApp.getList().size() == 0){
 			jsonBean.setId(StatusUtils.DATA_QUERY_FAIL);
-			jsonBean.setMsg("Êı¾İ¼ÓÔØÊ§°Ü£¡");
+			jsonBean.setMsg("æ•°æ®åŠ è½½å¤±è´¥ï¼");
 			
 		}else{
 			jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
-			jsonBean.setMsg("Êı¾İ¼ÓÔØ³É¹¦£¡");
+			jsonBean.setMsg("æ•°æ®åŠ è½½æˆåŠŸï¼");
 			
 		}
 		

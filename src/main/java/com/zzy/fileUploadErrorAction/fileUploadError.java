@@ -15,7 +15,7 @@ public class fileUploadError extends ActionSupport{
 		JsonBean<String> jsonBean = new JsonBean<>();
 		
 		jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-		jsonBean.setMsg("所上传的文件格式不正确，请重新填写");
+		jsonBean.setMsg("鎵�涓婁紶鐨勬枃浠舵牸寮忎笉姝ｇ‘锛岃閲嶆柊濉啓");
 		
 		ReturnJsonByResponse.ReturnJson(ServletActionContext.getResponse(), jsonBean);
 		

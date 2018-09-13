@@ -39,20 +39,20 @@ public class ReviewService {
 		
 		if(existUser == null){
 			jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-			jsonBean.setMsg("用户ID出错");
+			jsonBean.setMsg("鐢ㄦ埛ID鍑洪敊");
 			return jsonBean;
 		}
 		
 		if(existGoods == null){
 			jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-			jsonBean.setMsg("商品ID出错");
+			jsonBean.setMsg("鍟嗗搧ID鍑洪敊");
 			return jsonBean;
 		}
 		
 		Review review = new Review(reviewContext, DateConvert.DateConvertToLong(new Date()), existGoods, existUser);
 		reviewDao.save(review);
 		jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
-		jsonBean.setMsg("保存成功");
+		jsonBean.setMsg("淇濆瓨鎴愬姛");
 		jsonBean.setData(null);
 		
 		return jsonBean;

@@ -6,17 +6,17 @@ import java.util.List;
 public class JsonBean<T> {
 
 	/**
-	 * ±£´æ²Ù×÷µÄ×´Ì¬ĞÅÏ¢
+	 * ä¿å­˜æ“ä½œçš„çŠ¶æ€ä¿¡æ¯
 	 */
 	private Integer id;
 
 	/**
-	 * ±£´æ·µ»ØµÄµÄÊı¾İĞÅÏ¢
+	 * ä¿å­˜è¿”å›çš„çš„æ•°æ®ä¿¡æ¯
 	 */
 	private String msg;
 
 	/**
-	 * ·µ»Ø±£´æµÄÊı¾İ
+	 * è¿”å›ä¿å­˜çš„æ•°æ®
 	 */
 	private T data;
 

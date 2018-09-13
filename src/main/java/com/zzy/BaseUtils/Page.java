@@ -4,25 +4,25 @@ import java.util.List;
 
 public class Page<T> {
 	
-	//µ±Ç°µÚ¼¸Ò³
+	//å½“å‰ç¬¬å‡ é¡µ
 	private int pageNo;
 	
-	//µ±Ç°Ò³µÄ List
+	//å½“å‰é¡µçš„ List
 	private List<T> list;
 	
-	//Ã¿Ò³ÏÔÊ¾¶àÉÙÌõ¼ÇÂ¼
+	//æ¯é¡µæ˜¾ç¤ºå¤šå°‘æ¡è®°å½•
 	private int pageSize = 20;
 	
-	//¹²ÓĞ¶àÉÙÌõ¼ÇÂ¼
+	//å…±æœ‰å¤šå°‘æ¡è®°å½•
 	private long totalItemNumber;
 
-	//¹¹ÔìÆ÷ÖĞĞèÒª¶Ô pageNo ½øĞĞ³õÊ¼»¯
+	//æ„é€ å™¨ä¸­éœ€è¦å¯¹ pageNo è¿›è¡Œåˆå§‹åŒ–
 	public Page(int pageNo) {
 		super();
 		this.pageNo = pageNo;
 	}
 	
-	//ĞèÒªĞ£ÑéÒ»ÏÂ
+	//éœ€è¦æ ¡éªŒä¸€ä¸‹
 	public int getPageNo() {
 		if(pageNo < 0)
 			pageNo = 1;
@@ -46,7 +46,7 @@ public class Page<T> {
 		return list;
 	}
 	
-	//»ñÈ¡×ÜÒ³Êı
+	//è·å–æ€»é¡µæ•°
 	public int getTotalPageNumber(){
 		
 		int totalPageNumber = (int)totalItemNumber / pageSize;

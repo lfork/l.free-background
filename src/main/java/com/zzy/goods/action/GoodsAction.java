@@ -39,7 +39,7 @@ public class GoodsAction implements ModelDriven<Goods> {
 
 	JsonBean jsonBean = null;
 	
-	//½ÓÊÜÓÃ»§´«¹ıÀ´µÄÑ§ºÅ
+	//æ¥å—ç”¨æˆ·ä¼ è¿‡æ¥çš„å­¦å·
 	private String studentId;
 	
 	private String[] desc;
@@ -48,10 +48,10 @@ public class GoodsAction implements ModelDriven<Goods> {
 		this.desc = desc;
 	}
 	
-	//½ÓÊÜÓÃ»§´«¹ıÀ´µÄ¶ş¼¶·ÖÀàID
+	//æ¥å—ç”¨æˆ·ä¼ è¿‡æ¥çš„äºŒçº§åˆ†ç±»ID
 	private String csId;
 	
-	//½ÓÊÜ´«¹ıÀ´µÄÉÌÆ·ID
+	//æ¥å—ä¼ è¿‡æ¥çš„å•†å“ID
 	private String goodsId;
 	
 	public void setGoodsId(String goodsId) {
@@ -70,9 +70,9 @@ public class GoodsAction implements ModelDriven<Goods> {
 		this.jsonBean = jsonBean;
 	}
 
-	private File coverImage; // ÉÏ´«Ëù¶ÔÓ¦µÄÎÄ¼ş
-	private String coverImageContentType; // ¶ÔÓ¦ÉÏ´«ÎÄ¼şµÄÀàĞÍ
-	private String coverImageFilename; // ¶ÔÓ¦ÉÏ´«ÎÄ¼şµÄÃû³Æ
+	private File coverImage; // ä¸Šä¼ æ‰€å¯¹åº”çš„æ–‡ä»¶
+	private String coverImageContentType; // å¯¹åº”ä¸Šä¼ æ–‡ä»¶çš„ç±»å‹
+	private String coverImageFilename; // å¯¹åº”ä¸Šä¼ æ–‡ä»¶çš„åç§°
 
 	public void setCoverImage(File coverImage) {
 		this.coverImage = coverImage;
@@ -122,18 +122,18 @@ public class GoodsAction implements ModelDriven<Goods> {
 
 		if (studentId == null || "".equals(studentId) || csId == null || "".equals(csId) || goods.getgName() == null || "".equals(goods.getgName())) {
 			jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-			jsonBean.setMsg("ÓÃ»§ÕËºÅ³ö´í");
+			jsonBean.setMsg("ç”¨æˆ·è´¦å·å‡ºé”™");
 		}else{
 			existUser = userService.findUserByUserId(Integer.parseInt(studentId));
 			if(existUser == null){
 				jsonBean.setId(StatusUtils.DATA_QUERY_FAIL);
-				jsonBean.setMsg("²éÑ¯Ê§°Ü");
+				jsonBean.setMsg("æŸ¥è¯¢å¤±è´¥");
 			}else{
 				categorySecond = categorySecondService.findCsByCsId(Integer.parseInt(csId));
 				path = FileUpload.fileUpload(coverImage, coverImageContentType, coverImageFilename, "goodsImage");
 				if(path == null){
 					jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-					jsonBean.setMsg("·âÃæÎÄ¼şÍ¼Æ¬ĞÅÏ¢²»¿ÉÒÔ³ö´í");
+					jsonBean.setMsg("å°é¢æ–‡ä»¶å›¾ç‰‡ä¿¡æ¯ä¸å¯ä»¥å‡ºé”™");
 				}else{
 					goods.setgCoverImage(path);
 					if(images != null && images.length > 0){
@@ -157,7 +157,7 @@ public class GoodsAction implements ModelDriven<Goods> {
 					goods.setUser(existUser);
 					goods.setCategorySecond(categorySecond);
 					goodsService.save(goods);
-					jsonBean.setMsg("ÉÌÆ·ÉÏ´«³É¹¦");
+					jsonBean.setMsg("å•†å“ä¸Šä¼ æˆåŠŸ");
 					jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
 				}
 			}
@@ -168,7 +168,7 @@ public class GoodsAction implements ModelDriven<Goods> {
 	}
 	
 	/**
-	 * ²éÑ¯ÉÌÆ· Í¨¹ıÉÌÆ·ID, °²×¿ÓëWeb½øĞĞÍ¨ÓÃ
+	 * æŸ¥è¯¢å•†å“ é€šè¿‡å•†å“ID, å®‰å“ä¸Webè¿›è¡Œé€šç”¨
 	 * @return
 	 */
 	public String getGoodsById(){
@@ -177,12 +177,12 @@ public class GoodsAction implements ModelDriven<Goods> {
 		
 		if(goodsId == null || "".equals(goodsId)){
 			jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-			jsonBean.setMsg("ÉÌÆ·ID³ö´í");
+			jsonBean.setMsg("å•†å“IDå‡ºé”™");
 		}else{
 			GoodsBeanApp goodsBeanApp = goodsService.findGoodsById(goodsId);
 			
 			if(goods == null){
-				jsonBean.setMsg("ÉÌÆ·²éÑ¯Ê§°Ü");
+				jsonBean.setMsg("å•†å“æŸ¥è¯¢å¤±è´¥");
 				jsonBean.setId(StatusUtils.DATA_QUERY_FAIL);
 			}else{
 				Set<GoodsImage> images = goods.getGoodsImages();
@@ -190,7 +190,7 @@ public class GoodsAction implements ModelDriven<Goods> {
 				for (GoodsImage goodsImage : images) {
 					goodsImage.setGoods(null);
 				}
-				jsonBean.setMsg("ÉÌÆ·²éÑ¯³É¹¦");
+				jsonBean.setMsg("å•†å“æŸ¥è¯¢æˆåŠŸ");
 				jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
 				jsonBean.setData(goodsBeanApp);
 			}
@@ -202,7 +202,7 @@ public class GoodsAction implements ModelDriven<Goods> {
 	}
 	
 	/**
-	 * É¾³ıÉÌÆ· Í¨¹ıÉÌÆ·ID, °²×¿ÓëWeb½øĞĞÍ¨ÓÃ
+	 * åˆ é™¤å•†å“ é€šè¿‡å•†å“ID, å®‰å“ä¸Webè¿›è¡Œé€šç”¨
 	 * @return
 	 */
 	public String deleteGoodsById(){
@@ -211,15 +211,15 @@ public class GoodsAction implements ModelDriven<Goods> {
 		
 		if(goodsId == null || "".equals(goodsId)){
 			jsonBean.setId(StatusUtils.DATAFRONT_ERROR);
-			jsonBean.setMsg("ÉÌÆ·ID³ö´í");
+			jsonBean.setMsg("å•†å“IDå‡ºé”™");
 		}else{
 			boolean b = goodsService.deleteGoodsById(goodsId);
 			if(b){
 				jsonBean.setData(StatusUtils.OPERATION_SUCCESS);
-				jsonBean.setMsg("„h³ı³É¹¦");
+				jsonBean.setMsg("åˆªé™¤æˆåŠŸ");
 			}else{
 				jsonBean.setData(StatusUtils.DATA_DELETE_FAIL);
-				jsonBean.setMsg("„h³ıÊ§”¡");
+				jsonBean.setMsg("åˆªé™¤å¤±æ•—");
 			}
 		}
 		

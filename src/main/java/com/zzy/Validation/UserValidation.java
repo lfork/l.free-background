@@ -6,12 +6,12 @@ import java.util.regex.Pattern;
 public class UserValidation {
 
 	/**
-	 * ËùÔËÓÃµÄÕıÔò±í´ïÊ½µÄ¼¯ºÏ£º 
-	 * userId µÄÕıÔò±í´ïÊ½£º"-?[1-9]\\d*" (Êı×Ö) 
-	 * userNameµÄÕıÔò±í´ïÊ½£º"[A-Za-z0-9_\\-\\u4e00-\\u9fa5]+"
-	 * userPassword µÄÕıÔò±í´ïÊ½£º"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$" (Ö»ÄÜÎ»Êı×Ö»òÕß×ÖÄ¸) 
-	 * userEmail µÄÕıÔò±í´ïÊ½£º"\\w[-\\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\\.)+[A-Za-z]{2,14}"
-	 * userPhone µÄÕıÔò±í´ïÊ½£º"0?(13|14|15|18)[0-9]{9}"
+	 * æ‰€è¿ç”¨çš„æ­£åˆ™è¡¨è¾¾å¼çš„é›†åˆï¼š 
+	 * userId çš„æ­£åˆ™è¡¨è¾¾å¼ï¼š"-?[1-9]\\d*" (æ•°å­—) 
+	 * userNameçš„æ­£åˆ™è¡¨è¾¾å¼ï¼š"[A-Za-z0-9_\\-\\u4e00-\\u9fa5]+"
+	 * userPassword çš„æ­£åˆ™è¡¨è¾¾å¼ï¼š"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$" (åªèƒ½ä½æ•°å­—æˆ–è€…å­—æ¯) 
+	 * userEmail çš„æ­£åˆ™è¡¨è¾¾å¼ï¼š"\\w[-\\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\\.)+[A-Za-z]{2,14}"
+	 * userPhone çš„æ­£åˆ™è¡¨è¾¾å¼ï¼š"0?(13|14|15|18)[0-9]{9}"
 	 * 
 	 */
 
@@ -25,7 +25,7 @@ public class UserValidation {
 
 	public static final String regex_UserPhone = "0?(13|14|15|18)[0-9]{9}";
 
-	// ¶Ô×¢²áÊ±µÄÊı¾İ½øĞĞÑéÖ¤
+	// å¯¹æ³¨å†Œæ—¶çš„æ•°æ®è¿›è¡ŒéªŒè¯
 	public static boolean RegistValidation(String userId, String userName, String userPassword) {
 		
 		System.out.println(RegexValidation(userId.trim(), regex_UserId) && RegexValidation(userName.trim(), regex_UserName)
@@ -37,7 +37,7 @@ public class UserValidation {
 		return false;
 	}
 
-	// ¶ÔĞŞ¸ÄÓÃ»§ĞÅÏ¢ºó±£´æ²Ù×÷Ö®Ç°µÄÊı¾İ½øĞĞĞŞ¸Ä
+	// å¯¹ä¿®æ”¹ç”¨æˆ·ä¿¡æ¯åä¿å­˜æ“ä½œä¹‹å‰çš„æ•°æ®è¿›è¡Œä¿®æ”¹
 	public static boolean SaveValidation(String userId, String userName, String userEmail,
 			String userPhone) {
 		if (RegexValidation(userId, regex_UserId) && RegexValidation(userName, regex_UserName) && RegexValidation(userEmail, regex_UserEmail)
@@ -47,7 +47,7 @@ public class UserValidation {
 		return false;
 	}
 
-	// ´«ÈëÒªÑéÖ¤µÄ×Ö¶Î£¬ÒÔ¼°ĞèÒªµÄÕıÔò±í´ïÊ½£¬ ½øĞĞ×Ö¶ÎµÄÑéÖ¤
+	// ä¼ å…¥è¦éªŒè¯çš„å­—æ®µï¼Œä»¥åŠéœ€è¦çš„æ­£åˆ™è¡¨è¾¾å¼ï¼Œ è¿›è¡Œå­—æ®µçš„éªŒè¯
 	public static boolean RegexValidation(String args, String regex) {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(args);

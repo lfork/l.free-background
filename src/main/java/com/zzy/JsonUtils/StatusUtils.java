@@ -3,28 +3,28 @@ package com.zzy.JsonUtils;
 public class StatusUtils {
 	
 	/**
-	 * 操作成功
+	 * 鎿嶄綔鎴愬姛
 	 */
 	public final static Integer OPERATION_SUCCESS = 1;
 
 	
 	/**
-	 * 数据更新失败
+	 * 鏁版嵁鏇存柊澶辫触
 	 */
 	public final static Integer DATA_UPDATE_FAIL = 2;
 	
 	/**
-	 * 数据删除失败
+	 * 鏁版嵁鍒犻櫎澶辫触
 	 */
 	public final static Integer DATA_DELETE_FAIL = 3;
 	
 	/**
-	 * 数据查找失败
+	 * 鏁版嵁鏌ユ壘澶辫触
 	 */
 	public final static Integer DATA_QUERY_FAIL = 4;
 	
 	/**
-	 * 前端数据接收出错
+	 * 鍓嶇鏁版嵁鎺ユ敹鍑洪敊
 	 */
 	public final static Integer DATAFRONT_ERROR = 5;
 	

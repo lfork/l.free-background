@@ -42,7 +42,7 @@ public class CategorySecondAction {
 	private JsonBean bean = null;
 
 	/**
-	 * µÃµ½ ¶ş¼¶·ÖÀàµÄ ÁĞ±í
+	 * å¾—åˆ° äºŒçº§åˆ†ç±»çš„ åˆ—è¡¨
 	 * 
 	 * @return
 	 */
@@ -61,11 +61,11 @@ public class CategorySecondAction {
 		System.out.println(categorySeconds.size() + " json test");
 
 		if (categorySeconds == null || categorySeconds.size() == 0) {
-			bean1.setMsg("Êı¾İ²éÑ¯Ê§°Ü");
+			bean1.setMsg("æ•°æ®æŸ¥è¯¢å¤±è´¥");
 			bean1.setId(StatusUtils.DATA_QUERY_FAIL);
 		} else {
 			bean1.setId(StatusUtils.OPERATION_SUCCESS);
-			bean1.setMsg("²Ù×÷³É¹¦");
+			bean1.setMsg("æ“ä½œæˆåŠŸ");
 			bean1.setData(categorySeconds);
 		}
 
@@ -81,7 +81,7 @@ public class CategorySecondAction {
 		Page<Goods> page = null;
 
 		if (csId == null || "".equals(csId)) {
-			bean.setMsg("Ç°¶ËÊı¾İ´íÎó");
+			bean.setMsg("å‰ç«¯æ•°æ®é”™è¯¯");
 			bean.setId(StatusUtils.DATAFRONT_ERROR);
 		} else {
 			if (pageNo == null || "".equals(pageNo)) {
@@ -89,11 +89,11 @@ public class CategorySecondAction {
 			}
 			page = categorySecondService.getPageCsList(csId, pageNo);
 			if (page == null) {
-				bean.setMsg("Êı¾İ²éÑ¯Ê§°Ü");
+				bean.setMsg("æ•°æ®æŸ¥è¯¢å¤±è´¥");
 				bean.setId(StatusUtils.DATA_QUERY_FAIL);
 			} else {
 				bean.setId(StatusUtils.OPERATION_SUCCESS);
-				bean.setMsg("²Ù×÷³É¹¦");
+				bean.setMsg("æ“ä½œæˆåŠŸ");
 				bean.setData(page);
 			}
 		}

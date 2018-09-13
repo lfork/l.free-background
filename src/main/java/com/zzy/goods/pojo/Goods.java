@@ -11,27 +11,27 @@ import com.zzy.user.pojo.User;
 public class Goods {
 	
 	/**
-	 * ÉÌÆ·ID
+	 * å•†å“ID
 	 */
 	private Integer gId;
 	
 	/**
-	 * ÉÌÆ·Ãû³Æ
+	 * å•†å“åç§°
 	 */
 	private String gName;
 	
 	/**
-	 * ÉÌÆ·¹ºÂò¼Û¸ñ
+	 * å•†å“è´­ä¹°ä»·æ ¼
 	 */
 	private double gBuyPrice;
 	
 	/**
-	 * ÉÌÆ·×¼±¸³öÊÖµÄ¼Û¸ñ
+	 * å•†å“å‡†å¤‡å‡ºæ‰‹çš„ä»·æ ¼
 	 */
 	private double gSellPrice;
 	
 	/**
-	 * ÉÌÆ·Õ¹Ê¾µÄ·âÃæ£¬¼´×î³õĞèÒªÉÌÆ·
+	 * å•†å“å±•ç¤ºçš„å°é¢ï¼Œå³æœ€åˆéœ€è¦å•†å“
 	 */
 	private String gCoverImage;
 	
@@ -44,27 +44,27 @@ public class Goods {
 		this.gIsSold = gIsSold;
 	}
 	/**
-	 * ÉÌÆ·µÄÃèÊö
+	 * å•†å“çš„æè¿°
 	 */
 	private String gDesc;
 	
 	/**
-	 * ÉÌÆ·µÄ´´½¨Ê±¼ä
+	 * å•†å“çš„åˆ›å»ºæ—¶é—´
 	 */
 	private String gMakeDate;
 	
 	/**
-	 * ËùÊô¶ş¼¶·ÖÀà
+	 * æ‰€å±äºŒçº§åˆ†ç±»
 	 */
 	private CategorySecond categorySecond;
 	
 	/**
-	 * ËùÊôUser
+	 * æ‰€å±User
 	 */
 	private User user;
 	
 	/**
-	 * ÉÌÆ·°üº¬µÄÆäËûÕ¹Ê¾Í¼Æ¬ĞÅÏ¢
+	 * å•†å“åŒ…å«çš„å…¶ä»–å±•ç¤ºå›¾ç‰‡ä¿¡æ¯
 	 */
 	
 	private Set<GoodsImage> goodsImages = new HashSet<>();

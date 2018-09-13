@@ -90,7 +90,7 @@ public class UserService {
 			return loginUser;
 		}
 		
-		//只能使用 学号进行登录
+		//鍙兘浣跨敤 瀛﹀彿杩涜鐧诲綍
 //		if(!UserValidation.LoginValidation(studentId, userPassword)){
 //			return null;
 //		}

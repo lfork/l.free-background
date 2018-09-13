@@ -3,32 +3,32 @@ package com.zzy.user.pojo;
 import com.zzy.school.pojo.School;
 
 /**
- * @author ÖÜÖ¾Ô¶
- * Ê±¼ä:2018-3-20
- * ËµÃ÷£ºÃèÊöÓÃ»§µÄ Pojo Àà£¬ ¶ÔÓ¦Êı¾İ¿âÖĞµÄ user ±í
+ * @author å‘¨å¿—è¿œ
+ * æ—¶é—´:2018-3-20
+ * è¯´æ˜ï¼šæè¿°ç”¨æˆ·çš„ Pojo ç±»ï¼Œ å¯¹åº”æ•°æ®åº“ä¸­çš„ user è¡¨
  */
 
 public class User {
 	
 	
-	private Integer userId;     //ÓÃ»§µÄID
+	private Integer userId;     //ç”¨æˆ·çš„ID
 	
 	
-	private String userName;    //ÓÃ»§ĞÕÃû
+	private String userName;    //ç”¨æˆ·å§“å
 	
 	
-	private String userPassword;  //ÓÃ»§ÃÜÂë
+	private String userPassword;  //ç”¨æˆ·å¯†ç 
 	
 	
-	private String userEmail;     //ÓÃ»§ÓÊÏäµØÖ·
+	private String userEmail;     //ç”¨æˆ·é‚®ç®±åœ°å€
 	
 	
-	private String userPhone;      //ÓÃ»§µç»°ºÅÂë
+	private String userPhone;      //ç”¨æˆ·ç”µè¯å·ç 
 	
 	
-	private String userAddress;    //ÓÃ»§µÄ×¡Ö·
+	private String userAddress;    //ç”¨æˆ·çš„ä½å€
 	
-	private School userSchool; //ÓÃ‘ôµÄÑ§Ğ£
+	private School userSchool; //ç”¨æˆ¶çš„å­¦æ ¡
 
 	public School getUserSchool() {
 		return userSchool;
@@ -38,13 +38,13 @@ public class User {
 		this.userSchool = userSchool;
 	}
 
-	private String userImagePath;   //ÓÃ»§Í·ÏñÎÄ¼ş´æ·ÅÂ·¾¶
+	private String userImagePath;   //ç”¨æˆ·å¤´åƒæ–‡ä»¶å­˜æ”¾è·¯å¾„
 	 
 	
-	private String userDesc;          //ÓÃ»§ÃèÊö
+	private String userDesc;          //ç”¨æˆ·æè¿°
 	
 	
-	private String userMakeDate;        //ÓÃ»§ĞŞ¸Ä»òÕß×¢²áÊ±¼ä
+	private String userMakeDate;        //ç”¨æˆ·ä¿®æ”¹æˆ–è€…æ³¨å†Œæ—¶é—´
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;

@@ -23,10 +23,10 @@ public class SchoolService {
 		
 		if(schools == null || schools.size() == 0){
 			jsonBean.setId(StatusUtils.DATA_QUERY_FAIL);
-			jsonBean.setMsg("查询失败");
+			jsonBean.setMsg("鏌ヨ澶辫触");
 		}else{
 			jsonBean.setId(StatusUtils.OPERATION_SUCCESS);
-			jsonBean.setMsg("查询成功");
+			jsonBean.setMsg("鏌ヨ鎴愬姛");
 			jsonBean.setData(schools);
 		}
 		
